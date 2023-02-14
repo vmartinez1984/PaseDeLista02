@@ -1,0 +1,15 @@
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\bin\Debug\net6.0\RollCall.BusinessLayer.deps.json
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\bin\Debug\net6.0\RollCall.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\bin\Debug\net6.0\RollCall.BusinessLayer.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\bin\Debug\net6.0\RollCall.Core.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\bin\Debug\net6.0\RollCall.Core.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.AssemblyInfo.cs
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.csproj.CopyComplete
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\refint\RollCall.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\RollCall.BusinessLayer.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.BusinessLayer\obj\Debug\net6.0\ref\RollCall.BusinessLayer.dll

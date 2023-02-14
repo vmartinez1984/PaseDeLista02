@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2gnbxLpxxjXnYJL6H68WFNTGWIDhba8Bu6+ga4eOB9I=",
+  "Source": "RollCall.ApiRest",
+  "BasePath": "_content/RollCall.ApiRest",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

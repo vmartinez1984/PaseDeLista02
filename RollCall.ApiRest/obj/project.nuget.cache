@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hV6P/z5cAVtjxtXEyuPOOmX95KjlTQEHAR2KNLS19hz7OQSkD/kCTH+KaepuiHAbOzHXCmYZxiYZiMGx1j7QJQ==",
+  "dgSpecHash": "ugbDUNs2HYI5fXtsbakg3NXTN/UlZ7u1BVr4EmIiIhDgdRa3rOrG1gKCRq33Tis2j0IKVxd+SST/rPvB1tnmQA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.ApiRest\\RollCall.ApiRest.csproj",
   "expectedPackageFiles": [
@@ -130,6 +130,7 @@
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\system.linq.dynamic.core\\1.2.25\\system.linq.dynamic.core.1.2.25.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",

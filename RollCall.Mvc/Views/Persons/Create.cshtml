@@ -1,0 +1,137 @@
+﻿@model RollCall.Core.Dtos.PersonDtoIn
+
+@{
+    ViewData["Title"] = "Agregar persona";
+}
+
+<h1>Agregar persona</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" autofocus />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genere" class="control-label"></label>
+                <select asp-for="Genere" class="form-select" >
+                    <option value="">Seleccione</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                </select>
+
+                <span asp-validation-for="Genere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetAndNumber" class="control-label"></label>
+                <input asp-for="StreetAndNumber" class="form-control" />
+                <span asp-validation-for="StreetAndNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" onkeyup="buscarCodigoPostal()" maxlength="5"/>
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Settlement" class="control-label"></label>
+                <select asp-for="Settlement" class="form-select"></select>
+                <span asp-validation-for="Settlement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Town" class="control-label"></label>
+                <input id="TownAux" class="form-control" disabled="disabled"/>
+                <input asp-for="Town" type="hidden"/>
+                <span asp-validation-for="Town" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input id="StateAux" class="form-control" disabled="disabled" />
+                <input asp-for="State" type="hidden" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function buscarCodigoPostal() {
+            var codigoPostal
+            const url = "http://127.0.0.1:8080/codigosPostales/v2/index.php/api/CodigosPostales/"
+
+            codigoPostal = document.getElementById('ZipCode').value
+            console.log(codigoPostal)
+            if (codigoPostal.length == 5) {
+                fetch(url + codigoPostal)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        codigoPostal = data[0]
+                        document.getElementById('Town').value = codigoPostal.alcaldia
+                        document.getElementById('TownAux').value = codigoPostal.alcaldia
+                        document.getElementById('State').value = codigoPostal.estado
+                        document.getElementById('StateAux').value = codigoPostal.estado
+                        llenarSelectDeColonia(data)
+                    })
+            }
+        }
+
+        function llenarSelectDeColonia(codigosPostales){
+            //limpiamos la opciones del select
+            document.getElementById('Settlement').innerHTML = ''
+
+            if(codigosPostales.length == 1){
+                //si solo tiene una opción la damos por seleccionada
+                var option 
+
+                option = document.createElement('option')
+                option.value = codigosPostales[0].tipoDeAsentamiento + ' ' + codigosPostales[0].asentamiento
+                option.text = codigosPostales[0].tipoDeAsentamiento + ' ' + codigosPostales[0].asentamiento
+                document.getElementById('Settlement').appendChild(option)
+            }else{
+                // colocamos las opciones
+                var select
+                var option
+
+               option = document.createElement('option')
+               option.value = ''
+               option.text = 'Seleccione la colonia'
+               select = document.getElementById('Settlement').appendChild(option)
+               codigosPostales.forEach(item =>{
+                    var option
+
+                    option = document.createElement('option')
+                    option.value = item.tipoDeAsentamiento + ' ' + item.asentamiento
+                    option.text = item.tipoDeAsentamiento + ' ' + item.asentamiento
+
+                    select = document.getElementById('Settlement').appendChild(option)
+               })
+            }
+        }
+    </script>
+}

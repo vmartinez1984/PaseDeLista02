@@ -21,7 +21,9 @@ namespace RollCall.Core.Interfaces
     }
 
     public interface IPersonBl : IBaseBl<PersonDtoIn, PersonDto>
+    //{
     {
-        Task<List<PersonDto>> GetAsync();
+        //Task<List<PersonDto>> GetAsync();
+        Task<PagerDto> GetAsync(PagerDtoIn pagerDto);
     }
 }

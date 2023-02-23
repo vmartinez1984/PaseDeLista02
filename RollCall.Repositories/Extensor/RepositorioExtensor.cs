@@ -12,6 +12,7 @@ namespace RollCall.Repositories.Extensor
             services.AddScoped<AppDbContext>();
 
             services.AddScoped<IPersonRepository, PersonRepository>();  
+            services.AddScoped<IAddressRepository, AddressRepository>();  
 
             services.AddScoped<IRepository, Repository>();
         }

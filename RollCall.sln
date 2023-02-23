@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollCall.Mvc", "RollCall.Mvc\RollCall.Mvc.csproj", "{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{D9AC7B35-5AF9-41CA-B7B9-EA4BBBAF3A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AC7B35-5AF9-41CA-B7B9-EA4BBBAF3A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9AC7B35-5AF9-41CA-B7B9-EA4BBBAF3A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

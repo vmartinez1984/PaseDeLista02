@@ -23,8 +23,8 @@ namespace RollCall.ApiRest.Controllers
         {
             List<PersonDto> list;
 
-            list = await _rollCallBl.Person.GetAsync();
-
+            list = await _rollCallBl.Person.GetAsync(new PagerDtoIn());
+            //throw new Exception("Valio pepino");
             return Ok(list);
         }
 
@@ -35,11 +35,17 @@ namespace RollCall.ApiRest.Controllers
         //    return "value";
         //}
 
-        //// POST api/<PersonsController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<PersonsController>
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] PersonDtoIn person)
+        {
+            int id;
+
+            //id = await _rollCallBl.Person.AddAsync(person);
+            id = 1;
+
+            return Created($"/Persons/{id}", new { Id = id });
+        }
 
         //// PUT api/<PersonsController>/5
         //[HttpPut("{id}")]

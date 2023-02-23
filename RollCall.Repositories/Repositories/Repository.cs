@@ -5,12 +5,16 @@ namespace RollCall.Repositories.Repositories
     public class Repository : IRepository
     {
         public Repository(
-           IPersonRepository personRepository
+           IPersonRepository personRepository,
+           IAddressRepository addressRepository
         )
         {
             Person = personRepository;
+            Address = addressRepository;
         }
 
         public IPersonRepository Person { get; }
+
+        public IAddressRepository Address { get; }
     }    
 }

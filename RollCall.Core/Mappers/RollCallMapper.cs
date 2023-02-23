@@ -6,10 +6,16 @@ namespace RollCall.Core.Mappers
 {
     public class RollCallMapper: Profile
     {
-        public RollCallMapper() 
+        public RollCallMapper()
         {
             CreateMap<PersonDtoIn, Person>();
             CreateMap<Person, PersonDto>();
+
+            CreateMap<PersonDtoIn, Address>();
+
+            CreateMap<PagerDtoIn, PagerEntity>();
+
+            CreateMap<PagerEntity,PagerDto>();
         }
     }
 }

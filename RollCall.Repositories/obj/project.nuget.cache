@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FZeDaPrGPtKudTE+jkQfgduSzsmJZedbmuZWceYEIZO6XofTgXFGbmuigx1mVgOnnEJvikrLM2J93GgdxJx7Qw==",
+  "dgSpecHash": "4ts2kc9tSkv7IY8X/3veWzaYdmyuhrZntUomgrgev4MTBB9buQawonnlMxFf9bcFrkPnTHrj9AngHDoTMKZn9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Repositories\\RollCall.Repositories.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.8.0\\system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\system.linq.dynamic.core\\1.2.25\\system.linq.dynamic.core.1.2.25.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.runtime.caching\\4.7.0\\system.runtime.caching.4.7.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\vmartinez\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",

@@ -5,7 +5,7 @@ namespace RollCall.BusinessLayer.Bl
     public class RollCallBl : IBusinessLayer
     {
         public RollCallBl(
-            IPersonBl personBl
+            IPersonBl personBl            
         )
         {
             Person = personBl;

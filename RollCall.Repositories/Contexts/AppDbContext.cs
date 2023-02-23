@@ -121,7 +121,7 @@ namespace RollCall.Repositories.Contexts
             {
                 entity.ToTable("Person");
 
-                entity.Property(e => e.Birthdaty).HasColumnType("date");
+                entity.Property(e => e.Birthday).HasColumnType("date");
 
                 entity.Property(e => e.DateRegistration).HasColumnType("datetime");
 

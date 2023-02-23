@@ -1,15 +1,11 @@
 ﻿using RollCall.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RollCall.Core.Interfaces
 {
     public interface IRepository
-    {      
+    {
         IPersonRepository Person { get; }
+        IAddressRepository Address { get; }
     }
 
     public interface IBaseRepository<T> where T : class
@@ -25,6 +21,8 @@ namespace RollCall.Core.Interfaces
 
     public interface IPersonRepository : IBaseRepository<Person>
     {
-        Task<List<Person>> GetAsync();
+        Task<List<Person>> GetAsync(PagerEntity pager);
     }
+
+    public interface IAddressRepository : IBaseRepository<Address> { }
 }

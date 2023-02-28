@@ -48,8 +48,9 @@ namespace RollCall.BusinessLayer.Bl
             PersonDto dto;
 
             entity = await _repository.Person.GetAsync(id);
-            dto = _mapper.Map<PersonDto>(entity);
+            dto = _mapper.Map<PersonDto>(entity);            
 
+            return dto;
         }
 
         public Task UpdateAsync(PersonDtoIn item, int id)

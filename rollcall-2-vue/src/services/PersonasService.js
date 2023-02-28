@@ -41,27 +41,32 @@ export default{
             "birthday": person.birthday,
             "streetAndNumber": person.streetAndNumber,
             "settlement": person.settlement,
-            "town": person.town,
-            "state": person.state,
+            //"town": person.town,
+            //"state": person.state,
             "zipCode": person.zipCode          
         });
 
-        const response = await fetch(url,{
+        const response = await fetch(url, {
             method: 'POST',
             headers:  myHeaders,
             body: raw
         })
 
-        if(!response.ok){
-            response.json().then((errorJson) => {
-                console.log(errorJson.errors); // should return the error json
-            }); 
-            console.log(response.text())
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Data", data)
+        if(response.ok){
+            const data = await response.json();
+            //console.log("Data", data)
+            return data
+        }else if(response.status == 400){            
+            const data = await response.json();
+            //console.log("Error 400", data)
 
-        return data
+            throw data
+        }else{
+            response.json().then((errorJson) => {
+                console.log(errorJson.errors); // should return the error json                
+                //throw new Error(`HTTP error! status: ${response.status}`);
+            }); 
+        }
+
     }
 }

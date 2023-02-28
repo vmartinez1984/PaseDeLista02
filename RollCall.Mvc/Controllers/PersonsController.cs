@@ -26,9 +26,13 @@ namespace RollCall.Mvc.Controllers
         }
 
         // GET: PersonsController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            PersonDto person;
+
+            person = await _rollCallBl.Person.GetAsync(id);
+
+            return View(person);
         }
 
         // GET: PersonsController/Create

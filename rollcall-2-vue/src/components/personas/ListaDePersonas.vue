@@ -13,7 +13,15 @@
             </form>
         </div>
         <div class="card-body">
-            <table class="table table-hover">
+            <template v-if="isLoading">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Nombre</th>
@@ -39,10 +47,14 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+                </table>
+            </template>
         </div>
         <div class="card-footer">
-            <div>
+            <div v-if="isLoading">
+                <span class="text-info">Cargando...</span>
+            </div>
+            <div v-else>
                 <div>
                     <p>
                         Total de registros: {{pager.totalRecords}}, Total de registros filtrados: {{pager.totalRecordsFiltered}}
@@ -81,15 +93,16 @@
 
     var pager = ref({})
     var list = ref({})
+    var isLoading = ref(true)
 
     const getPersons = async (pagerIn) =>{    
         var data
 
+        isLoading.value = true
         data = await personasService.obtenerPersonasAsync(pagerIn)
         list.value = data.list
         pager.value = data
-
-        //console.log(pager.value)
+        isLoading.value = false        
     }
 
     const cargarLista = async (paginaActual) =>{        

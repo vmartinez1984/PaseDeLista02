@@ -10306,6 +10306,7 @@
     "net6.0": [
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.11",
       "RollCall.BusinessLayer >= 1.0.0",
+      "RollCall.Core >= 1.0.0",
       "RollCall.Repositories >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.3.0"
     ]
@@ -10339,6 +10340,9 @@
           "projectReferences": {
             "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.BusinessLayer\\RollCall.BusinessLayer.csproj": {
               "projectPath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.BusinessLayer\\RollCall.BusinessLayer.csproj"
+            },
+            "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Core\\RollCall.Core.csproj": {
+              "projectPath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Core\\RollCall.Core.csproj"
             },
             "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Repositories\\RollCall.Repositories.csproj": {
               "projectPath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Repositories\\RollCall.Repositories.csproj"

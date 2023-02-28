@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RollCall.BusinessLayer\RollCall.BusinessLayer.csproj" />
+    <ProjectReference Include="..\RollCall.Core\RollCall.Core.csproj" />
     <ProjectReference Include="..\RollCall.Repositories\RollCall.Repositories.csproj" />
   </ItemGroup>
 

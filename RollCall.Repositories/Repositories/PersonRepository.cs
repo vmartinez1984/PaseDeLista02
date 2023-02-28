@@ -25,9 +25,13 @@ namespace RollCall.Repositories.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Person> GetAsync(int id)
+        public async Task<Person> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            Person entity;
+
+            entity = await _appDbContext.People.Include(x=> x.Addresses).Where(x=> x.Id == id).FirstOrDefaultAsync();
+
+            return entity;
         }
 
         public async Task<List<Person>> GetAsync(PagerEntity pager)

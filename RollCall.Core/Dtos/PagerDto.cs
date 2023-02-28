@@ -14,6 +14,16 @@ namespace RollCall.Core.Dtos
         [DefaultValue(10)]
         public int RecordsPerPage { get; set; } = 10;
 
+
+        [DefaultValue("Id")]
+        public string SortColumn { get; set; } = "Id";
+
+        [DefaultValue("DESC")]
+        public string SortColumnDir { get; set; } = "DESC";
+    }
+
+    public class PagerDto : PagerDtoIn
+    {
         public int TotalRecords { get; set; }
 
         public int CountPage
@@ -26,13 +36,6 @@ namespace RollCall.Core.Dtos
 
         public int TotalRecordsFiltered { get; set; }
 
-        public string SortColumn { get; set; } = "Id";
-
-        public string SortColumnDir { get; set; } = "DESC";
-    }
-
-    public class PagerDto : PagerDtoIn
-    {
         public object List { get; set; }
     }
 }

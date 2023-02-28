@@ -19,21 +19,26 @@ namespace RollCall.ApiRest.Controllers
 
         // GET: api/<PersonsController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] PagerDtoIn pagerDtoIn)
         {
-            List<PersonDto> list;
+            PagerDto pagerDto;
 
-            list = await _rollCallBl.Person.GetAsync(new PagerDtoIn());
+            pagerDto = await _rollCallBl.Person.GetAsync(pagerDtoIn);
             //throw new Exception("Valio pepino");
-            return Ok(list);
+
+            return Ok(pagerDto);
         }
 
-        //// GET api/<PersonsController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET api/<PersonsController>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+           PersonDto person;
+
+           person = await _rollCallBl.Person.GetAsync(id);
+
+           return Ok(person);
+        }
 
         // POST api/<PersonsController>
         [HttpPost]

@@ -5,6 +5,8 @@ namespace RollCall.Core.Interfaces
     public interface IBusinessLayer
     {
         IPersonBl Person { get; }
+
+        ICodigosPostalesBl CodigosPostales { get; }
     }
 
     /// <summary>
@@ -18,6 +20,11 @@ namespace RollCall.Core.Interfaces
         Task DeleteAsync(int id);
         Task<U> GetAsync(int id);
         Task UpdateAsync(T item, int id);
+    }
+
+    public interface ICodigosPostalesBl
+    {
+        Task<List<CodigoPostalDto>> ObtenerCodigosPostales(string codigoPostal);
     }
 
     public interface IPersonBl : IBaseBl<PersonDtoIn, PersonDto>

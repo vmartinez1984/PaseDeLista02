@@ -2,6 +2,10 @@
 
 namespace RollCall.Core.Dtos
 {
+    public class AddressDto: AddressDtoIn
+    {
+        public int Id { get; set; }
+    }
     public  class AddressDtoIn
     {
         [Required(ErrorMessage = "La calle y numero no puede ser vacio")]

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CodigosPostales.Repositories\CodigosPostales.Repositories.csproj" />
     <ProjectReference Include="..\RollCall.BusinessLayer\RollCall.BusinessLayer.csproj" />
     <ProjectReference Include="..\RollCall.Core\RollCall.Core.csproj" />
     <ProjectReference Include="..\RollCall.Repositories\RollCall.Repositories.csproj" />

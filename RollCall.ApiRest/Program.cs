@@ -1,3 +1,4 @@
+using CodigosPostales.Repositories;
 using RollCall.BusinessLayer.Extensor;
 using RollCall.Core.Mappers;
 using RollCall.Repositories.Extensor;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRollCall();
 builder.Services.AddMappers();
 builder.Services.AddRepository();
+builder.Services.AddCodigosPostalesRepository();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

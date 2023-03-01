@@ -10,10 +10,13 @@ namespace RollCall.Core.Dtos
         public DateTime DateRegistration { get; set; }
 
         //public bool IsActive { get; set; }
+        
     }
 
-    public class PersonDtoIn: AddressDtoIn
+    public class PersonDtoIn : AddressDtoIn
     {
+        public int AddressId { get; set; } 
+
         [Required(ErrorMessage = "El {0} no puede ser vacio")]
         [Display(Name = "Nombre")]
         public string Name { get; set; }

@@ -275,3 +275,5 @@ C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\runti
 C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\CodigosPostales.Repositories.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.ApiRest\bin\Debug\net6.0\CodigosPostales.Repositories.pdb

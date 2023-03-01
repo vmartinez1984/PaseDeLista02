@@ -3526,6 +3526,21 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "CodigosPostales.Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Newtonsoft.Json": "13.0.1",
+          "RollCall.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CodigosPostales.Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CodigosPostales.Repositories.dll": {}
+        }
+      },
       "RollCall.BusinessLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -10074,6 +10089,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "CodigosPostales.Repositories/1.0.0": {
+      "type": "project",
+      "path": "../CodigosPostales.Repositories/CodigosPostales.Repositories.csproj",
+      "msbuildProject": "../CodigosPostales.Repositories/CodigosPostales.Repositories.csproj"
+    },
     "RollCall.BusinessLayer/1.0.0": {
       "type": "project",
       "path": "../RollCall.BusinessLayer/RollCall.BusinessLayer.csproj",
@@ -10092,6 +10112,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CodigosPostales.Repositories >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.12",
       "RollCall.BusinessLayer >= 1.0.0",
       "RollCall.Core >= 1.0.0",
@@ -10125,6 +10146,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\vmartinez\\source\\repos\\RollCall\\CodigosPostales.Repositories\\CodigosPostales.Repositories.csproj": {
+              "projectPath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\CodigosPostales.Repositories\\CodigosPostales.Repositories.csproj"
+            },
             "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.BusinessLayer\\RollCall.BusinessLayer.csproj": {
               "projectPath": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.BusinessLayer\\RollCall.BusinessLayer.csproj"
             },

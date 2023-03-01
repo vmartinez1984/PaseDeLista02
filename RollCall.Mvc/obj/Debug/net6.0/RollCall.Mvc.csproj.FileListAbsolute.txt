@@ -275,3 +275,5 @@ C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\RollCall.
 C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\RollCall.Repositories.dll
 C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\RollCall.BusinessLayer.pdb
 C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\RollCall.Repositories.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\CodigosPostales.Repositories.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Mvc\bin\Debug\net6.0\CodigosPostales.Repositories.pdb

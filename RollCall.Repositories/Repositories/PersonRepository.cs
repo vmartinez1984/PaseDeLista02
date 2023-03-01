@@ -3,6 +3,7 @@ using RollCall.Core.Entities;
 using RollCall.Core.Interfaces;
 using RollCall.Repositories.Contexts;
 using System.Linq.Dynamic.Core;
+using System.Linq;
 
 namespace RollCall.Repositories.Repositories
 {
@@ -72,9 +73,26 @@ namespace RollCall.Repositories.Repositories
             return list;
         }
 
-        public Task UpdateAsync(Person entity)
+        public async Task UpdateAsync(Person entity)
         {
-            throw new NotImplementedException();
+            Person original;
+
+            original = _appDbContext.People.Include(x=> x.Addresses).Where(x => x.Id == entity.Id).FirstOrDefault();
+            original.Genere = entity.Genere;    
+            original.Name = entity.Name;
+            original.LastName = entity.LastName;
+            original.Birthday = entity.Birthday;
+            foreach (var address in original.Addresses)
+            {
+                var addressModify = entity.Addresses.ToList().Where(x=>x.Id == address.Id).FirstOrDefault();
+                address.StreetAndNumber = addressModify.StreetAndNumber;
+                address.ZipCode= addressModify.ZipCode;
+                address.Settlement = addressModify.Settlement;
+                address.Town= addressModify.Town;
+                address.State= addressModify.State;
+            }            
+
+            await _appDbContext.SaveChangesAsync();            
         }
     }
 }

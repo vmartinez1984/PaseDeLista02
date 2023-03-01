@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RollCall.Core.Dtos;
 using RollCall.Core.Interfaces;
 
@@ -59,18 +59,31 @@ namespace RollCall.Mvc.Controllers
         }
 
         // GET: PersonsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            PersonDto personDto;
+            List<CodigoPostalDto> codigosPostales;
+
+            personDto = await _rollCallBl.Person.GetAsync(id);
+            codigosPostales = await _rollCallBl.CodigosPostales.ObtenerCodigosPostales(personDto.ZipCode);
+            if(codigosPostales.Count() > 1)
+            {
+                codigosPostales.Add(new CodigoPostalDto { Colonia = "Seleccione" });
+            }
+            ViewBag.CodigosPostales = new SelectList(codigosPostales, "Colonia","Colonia");
+
+            return View(personDto);
         }
 
         // POST: PersonsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, PersonDtoIn person)
         {
             try
             {
+                await _rollCallBl.Person.UpdateAsync(person, id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

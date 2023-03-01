@@ -9,7 +9,10 @@ namespace RollCall.BusinessLayer.Extensor
         public static void  AddRollCall(this IServiceCollection services)
         {
             services.AddScoped<IPersonBl, PersonBl>();
+
             services.AddScoped<IBusinessLayer, RollCallBl>();
+
+            services.AddScoped<ICodigosPostalesBl, CodigosPostalesBl>();            
         }
     }
 }

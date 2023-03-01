@@ -1,3 +1,4 @@
+using CodigosPostales.Repositories;
 using RollCall.BusinessLayer.Extensor;
 using RollCall.Core.Mappers;
 using RollCall.Repositories.Extensor;
@@ -9,6 +10,7 @@ builder.Services.AddRollCall();
 builder.Services.AddRepository();
 builder.Services.AddMappers();
 builder.Services.AddControllersWithViews();
+builder.Services.AddCodigosPostalesRepository();
 
 var app = builder.Build();
 

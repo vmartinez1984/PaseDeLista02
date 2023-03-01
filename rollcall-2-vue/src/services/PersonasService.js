@@ -41,8 +41,8 @@ export default{
             "birthday": person.birthday,
             "streetAndNumber": person.streetAndNumber,
             "settlement": person.settlement,
-            //"town": person.town,
-            //"state": person.state,
+            "town": person.town,
+            "state": person.state,
             "zipCode": person.zipCode          
         });
 

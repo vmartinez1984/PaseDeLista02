@@ -16,7 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollCall.Mvc", "RollCall.Mvc\RollCall.Mvc.csproj", "{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall.Mvc", "RollCall.Mvc\RollCall.Mvc.csproj", "{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodigosPostales.Repositories", "CodigosPostales.Repositories\CodigosPostales.Repositories.csproj", "{ECDFFCE2-DF1D-4B7C-A345-E1489C10361E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E83BBD27-4A90-4CAB-AA99-70AFDF7DD433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDFFCE2-DF1D-4B7C-A345-E1489C10361E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDFFCE2-DF1D-4B7C-A345-E1489C10361E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDFFCE2-DF1D-4B7C-A345-E1489C10361E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDFFCE2-DF1D-4B7C-A345-E1489C10361E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

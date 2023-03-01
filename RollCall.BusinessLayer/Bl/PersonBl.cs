@@ -18,11 +18,11 @@ namespace RollCall.BusinessLayer.Bl
 
             person = _mapper.Map<Person>(item);
             person.Addresses.Add(_mapper.Map<Address>(item));
-            id = await _repository.Person.AddAsync(person);            
+            id = await _repository.Person.AddAsync(person);
 
             return id;
         }
-        
+
         public Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
@@ -30,7 +30,7 @@ namespace RollCall.BusinessLayer.Bl
 
         public async Task<PagerDto> GetAsync(PagerDtoIn pagerDtoIn)
         {
-            List<Person> entities;            
+            List<Person> entities;
             PagerEntity pagerEntity;
             PagerDto pagerDto;
 
@@ -46,16 +46,37 @@ namespace RollCall.BusinessLayer.Bl
         {
             Person entity;
             PersonDto dto;
+            Address address;
 
             entity = await _repository.Person.GetAsync(id);
-            dto = _mapper.Map<PersonDto>(entity);            
+            dto = _mapper.Map<PersonDto>(entity);
+            address = entity.Addresses.FirstOrDefault();
+            if(address != null)
+            {
+            dto.StreetAndNumber = address.StreetAndNumber;
+            dto.ZipCode = address.ZipCode;
+            dto.Settlement = address.Settlement;
+            dto.Town = address.Town;
+            dto.State = address.State;
+            dto.AddressId = address.Id;
+            }
 
             return dto;
         }
 
-        public Task UpdateAsync(PersonDtoIn item, int id)
+        public async Task UpdateAsync(PersonDtoIn item, int id)
         {
-            throw new NotImplementedException();
+            Person entity;
+            Address address;
+
+            entity = _mapper.Map<Person>(item);
+            address = _mapper.Map<Address>(item);
+            address.PersonId = id;
+            address.Id = item.AddressId;            
+            entity.Addresses.Add(address);            
+            entity.Id = id;
+
+            await _repository.Person.UpdateAsync(entity);
         }
     }
 }

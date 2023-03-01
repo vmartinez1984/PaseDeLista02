@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RollCall.Core.Dtos;
+using RollCall.Core.Entities;
 using RollCall.Core.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -33,11 +34,11 @@ namespace RollCall.ApiRest.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-           PersonDto person;
+            PersonDto person;
 
-           person = await _rollCallBl.Person.GetAsync(id);
+            person = await _rollCallBl.Person.GetAsync(id);
 
-           return Ok(person);
+            return Ok(person);
         }
 
         // POST api/<PersonsController>
@@ -46,17 +47,20 @@ namespace RollCall.ApiRest.Controllers
         {
             int id;
 
-            //id = await _rollCallBl.Person.AddAsync(person);
-            id = 1;
+            id = await _rollCallBl.Person.AddAsync(person);
+            //id = 1;
 
             return Created($"/Persons/{id}", new { Id = id });
         }
 
-        //// PUT api/<PersonsController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/<PersonsController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] PersonDtoIn person)
+        {
+            await _rollCallBl.Person.UpdateAsync(person, id);
+
+            return Accepted(new { Message = "Datos actualizados" });
+        }
 
         //// DELETE api/<PersonsController>/5
         //[HttpDelete("{id}")]

@@ -29,6 +29,27 @@ export default{
 
         return persons
     },
+    async obtenerPersonaAsync(personId){
+        var person
+        
+        await  fetch(url + '/' + personId)
+        .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Error en la solicitud.');
+              //console.log(response.text())
+              //throw response.text()
+            }
+        })
+        .then(data => {
+            //console.log(data)
+            person = data
+        })
+        .catch(error =>{ throw error})
+
+        return person
+    },
     async setPersonAsync(person){
         //console.log(person)
         var myHeaders = new Headers();
@@ -67,6 +88,46 @@ export default{
                 //throw new Error(`HTTP error! status: ${response.status}`);
             }); 
         }
+    },
+    
+    async actualizarPersona(person){
+        //console.log(person)
+        var myHeaders = new Headers();
+        myHeaders.append("accept", "*/*");
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({            
+            "name": person.name,
+            "lastName": person.lastName,
+            "genere": person.genere,
+            "birthday": person.birthday,
+            "streetAndNumber": person.streetAndNumber,
+            "settlement": person.settlement,
+            "town": person.town,
+            "state": person.state,
+            "zipCode": person.zipCode,
+            "addressId": person.addressId
+        });
 
+        const response = await fetch(url + "/" + person.id, {
+            method: 'PUT',
+            headers:  myHeaders,
+            body: raw
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            //console.log("Data", data)
+            return data
+        }else if(response.status == 400){            
+            const data = await response.json();
+            //console.log("Error 400", data)
+
+            throw data
+        }else{
+            response.json().then((errorJson) => {
+                console.log(errorJson.errors); // should return the error json                
+                //throw new Error(`HTTP error! status: ${response.status}`);
+            }); 
+        }
     }
 }

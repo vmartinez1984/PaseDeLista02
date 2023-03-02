@@ -19,6 +19,16 @@ const routes =[
         name: 'agregarPersona',
         component: FormularioDePersona
     },
+    {
+        path: '/personas/editar/:id',
+        name: 'editarPersona',
+        component: FormularioDePersona
+    },
+    {
+        path: '/personas/borrar/:id',
+        name: 'borrarPersona',
+        component: FormularioDePersona
+    },
 ]
 
 const router = createRouter({

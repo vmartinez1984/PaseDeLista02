@@ -1,10 +1,13 @@
 <template>
 
-    <h1 class="mt-4">Agregar persona</h1>
+    <h1 class="mt-4" :class="claseDelTitulo">{{titulo}}</h1>
+ 
     <form @submit.prevent="savePersonAsync">
         <div class="card">
+            
             <div class="card-body">
                     <input type="hidden" v-model="person.id"/>
+                    <input type="hidden" v-model="person.addressId"/>
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
@@ -80,7 +83,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Código postal</label>
-                                <input type="text" class="form-control" placeholder="Código postal" maxlength="5" @keyup="buscarCodigoPostal" v-model="person.zipCode" :disabled="disabled" :class="{'is-invalid': errors.zipCode.hasError}">
+                                <input type="text" class="form-control" placeholder="Código postal" maxlength="5" @keyup="buscarCodigoPostal_keyup" v-model="person.zipCode" :disabled="disabled" :class="{'is-invalid': errors.zipCode.hasError}">
                                 <div class="invalid-feedback">
                                     {{errors.zipCode.errorDescription}}
                                 </div>  
@@ -129,17 +132,32 @@
             </div>
             <div class="card-footer">
                 <div class="text-end">
-                <button class="btn btn-primary" type="submit" :disabled="disabled">
-                    <span v-if="disabled">
-                        Un momento
-                        <div class="spinner-border spinner-border-sm text-white" role="status">                        
-                        </div>
-                    </span>
-                    <span v-else>
-                        Guardar
-                    </span>
-                </button>
-                <router-link to="/personas" class="btn btn-secondary mx-1" :class="{'disabledlink': disabled}">Cancelar</router-link>
+                    <template v-if="isDelete">
+                        <button class="btn btn-danger" type="button" :disabled="isDeleting" @click="borrarPersona()">
+                            <span v-if="isDeleting">
+                                Un momento
+                                <div class="spinner-border spinner-border-sm text-white" role="status">                        
+                                </div>
+                            </span>
+                            <span v-else>
+                                Borrar
+                            </span>
+                        </button>
+                        <router-link to="/personas" class="btn btn-secondary mx-1" :class="{'disabledlink': isDeleting}">Cancelar</router-link>
+                    </template>
+                    <template v-else>
+                        <button class="btn" :class="claseDelBoton" type="submit" :disabled="disabled">
+                            <span v-if="disabled">
+                                Un momento
+                                <div class="spinner-border spinner-border-sm text-white" role="status">                        
+                                </div>
+                            </span>
+                            <span v-else>
+                                Guardar
+                            </span>
+                        </button>
+                        <router-link to="/personas" class="btn btn-secondary mx-1" :class="{'disabledlink': disabled}">Cancelar</router-link>
+                    </template>
                 </div>
             </div>
         </div>
@@ -148,12 +166,16 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { onMounted, ref } from 'vue'
     import codigoPostalService from '@/services/CodigoPostalSevice'    
     import personService from '@/services/PersonasService'
+    import { useRoute } from 'vue-router'
 
     //variables
-    var codigosPostales = ref([])    
+    var codigosPostales = ref([])  
+    var titulo = ref('Agregar persona')  
+    var claseDelTitulo = ref('text-primary')
+    var claseDelBoton = ref('')
     var person = ref({
         name: '',
         lastName: '',
@@ -164,9 +186,12 @@
         settlement: '',
         town: '',
         state: '',
-        id: 0
+        id: 0,
+        addressId: 0
     })
     var disabled = ref(false) 
+    var isDelete = ref(false)
+    var isDeleting = ref(false)
     var errors = ref({
         hasError: false,
         name: {
@@ -203,11 +228,17 @@
             hasError: false
         }
     })
+    var route = useRoute()
 
-    const buscarCodigoPostal = async () => {        
+    const buscarCodigoPostal_keyup = async () => {        
         if(person.value.zipCode.length == 5){
-            var lista
-            lista = await codigoPostalService.obtenerCodigosPostalesAsyn(person.value.zipCode)
+           buscarCodigoPostal(person.value.zipCode)
+        }
+    }    
+
+    const buscarCodigoPostal = async (codigoPostal) => {
+         var lista
+            lista = await codigoPostalService.obtenerCodigosPostalesAsyn(codigoPostal)
             codigosPostales.value = []
             lista.forEach(item =>{
                 codigosPostales.value.push({
@@ -224,9 +255,7 @@
                 person.value.town = codigosPostales.value[0].alcaldia
                 person.value.state = codigosPostales.value[0].estado
             }
-        }
-    }    
-
+    }
     const savePersonAsync = async () => {
         //console.log(person.value)
         if(validateForm()){
@@ -234,19 +263,42 @@
         }else{
             console.log("Formulario validado")
             if(person.value.id == 0){
-                try{
-                    disabled.value = true
-                    await personService.setPersonAsync(person.value);
-                }catch(error){
-                    //console.log(error)
-                    if(error.status == 400){
-                        setErrors(error.errors)
-                    }
-                }
-                disabled.value = false            
+                agregarPersonaAsync()
+            }else{
+                actualizarPersonaAsync()
             }
         }
     }    
+
+    const agregarPersonaAsync = async ()=>{
+        try{
+            disabled.value = true
+            await personService.setPersonAsync(person.value);
+        }catch(error){
+            //console.log(error)
+            if(error.status == 400){
+                setErrors(error.errors)
+            }
+        }
+        disabled.value = false  
+    }
+
+    const actualizarPersonaAsync= async ()=>{
+        try{
+            disabled.value = true
+            await personService.actualizarPersona(person.value);
+        }catch(error){
+            //console.log(error)
+            if(error.status == 400){
+                setErrors(error.errors)
+            }
+        }
+        disabled.value = false  
+    }
+
+    const borrarPersona = ()=>{
+        alert('Borrado')
+    }
 
     const validateForm = () =>{
          errors.value.hasError = false
@@ -313,6 +365,41 @@
         }
     }
 
+    const getPersonaId = async ()=>{
+        console.log(route.name)  
+        if(route.params.id == undefined){
+            //console.log("Agregar")
+        }else{
+            //console.log("editar")
+            person.value = await personService.obtenerPersonaAsync(route.params.id)     
+            person.value.birthday = person.value.birthday.substring(0,10)
+            buscarCodigoPostal(person.value.zipCode)
+            //console.log(person.value)      
+        }
+
+        //Pintar el boton de borrar
+        if(route.name == "borrarPersona"){
+            disabled.value = true
+            isDelete.value = true
+            titulo.value = '¿Desea borrar?'
+            claseDelTitulo.value = 'text-danger'
+        }
+
+        //Coloca los letreros y clases css
+        if(route.name == "editarPersona"){            
+            titulo.value = 'Editar persona'
+            claseDelTitulo.value = 'text-warning'
+            claseDelBoton.value = 'btn-warning text-white'
+        }
+
+        if(route.name == "agregarPersona"){
+            claseDelBoton.value = 'btn-primary text-white'
+        }
+    }
+
+    onMounted(()=>{
+       getPersonaId()
+    })
 </script>
 
 <style>

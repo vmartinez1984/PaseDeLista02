@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mt-4">Lista de personas</h1>
+    <h1 class="mt-4 text-primary">Lista de personas</h1>
 
     <div class="card">
         <div class="card-header">
@@ -37,13 +37,13 @@
                         <td>{{ person.lastName }}</td>
                         <td>{{ person.birthday.substring(0,10) }}</td>
                         <td>{{ person.dateRegistration.substring(0,10) }}</td>
-                        <td>                  
-                            <button type="button" class="btn btn-danger">
+                        <td>                                               
+                            <router-link class="btn btn-danger text-white mx-2" :to="{name:'borrarPersona', params:{'id': person.id}}">
                                 Borrar
-                            </button>
-                            <button type="button" class="btn btn-warning text-white mx-2">
+                            </router-link>                        
+                            <router-link class="btn btn-warning text-white mx-2" :to="{name:'editarPersona', params:{'id': person.id}}">
                                 Editar
-                            </button>
+                            </router-link>
                         </td>
                     </tr>
                 </tbody>

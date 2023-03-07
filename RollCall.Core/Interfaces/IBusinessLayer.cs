@@ -7,6 +7,10 @@ namespace RollCall.Core.Interfaces
         IPersonBl Person { get; }
 
         ICodigosPostalesBl CodigosPostales { get; }
+
+        IUserBl User { get; }
+
+        IRoleBl Role { get; }
     }
 
     /// <summary>
@@ -27,10 +31,19 @@ namespace RollCall.Core.Interfaces
         Task<List<CodigoPostalDto>> ObtenerCodigosPostales(string codigoPostal);
     }
 
-    public interface IPersonBl : IBaseBl<PersonDtoIn, PersonDto>
-    //{
+    public interface IPersonBl : IBaseBl<PersonDtoIn, PersonDto>    
     {
         //Task<List<PersonDto>> GetAsync();
         Task<PagerDto> GetAsync(PagerDtoIn pagerDto);
+    }
+
+    public interface IUserBl : IBaseBl<UserDtoIn, UserDto>
+    {
+        Task<List<UserDto>> GetAsync();
+    }
+
+    public interface IRoleBl
+    {
+        Task<List<RoleDto>> GetAsync();
     }
 }

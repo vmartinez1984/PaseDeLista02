@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ListaDePersonas from  '@/components/personas/ListaDePersonas.vue'
 import FormularioDePersona from '@/components/personas/FormularioDePersona.vue'
 import HelloWorld from '@/components/HelloWorld'
+import ListUsers from '@/components/users/ListUsers'
+import FormUser from '@/components/users/FormUser'
 
 const routes =[
     {
@@ -29,6 +31,26 @@ const routes =[
         name: 'borrarPersona',
         component: FormularioDePersona
     },
+    {
+        path: '/users',
+        name: 'listUsers',
+        component: ListUsers
+    },
+    {
+        path: '/users/create',
+        name: 'createUser',
+        component: FormUser
+    },
+    {
+        path: '/users/edit/:id',
+        name: 'editUser',
+        component: FormUser
+    },
+    {
+        path: '/users/delete/:id',
+        name: 'deleteUser',
+        component: FormUser
+    }
 ]
 
 const router = createRouter({

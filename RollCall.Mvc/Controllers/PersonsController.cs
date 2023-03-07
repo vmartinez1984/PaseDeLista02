@@ -93,18 +93,24 @@ namespace RollCall.Mvc.Controllers
         }
 
         // GET: PersonsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            PersonDto personDto;
+
+            personDto = await _rollCallBl.Person.GetAsync(id);
+
+            return View(personDto);
         }
 
         // POST: PersonsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, PersonDtoIn person)
         {
             try
             {
+                await _rollCallBl.Person.DeleteAsync(id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -12,7 +12,11 @@ namespace RollCall.BusinessLayer.Extensor
 
             services.AddScoped<IBusinessLayer, RollCallBl>();
 
-            services.AddScoped<ICodigosPostalesBl, CodigosPostalesBl>();            
+            services.AddScoped<ICodigosPostalesBl, CodigosPostalesBl>();
+            
+            services.AddScoped<IUserBl, UserBl>();        
+            
+            services.AddScoped<IRoleBl, RoleBl>();            
         }
     }
 }

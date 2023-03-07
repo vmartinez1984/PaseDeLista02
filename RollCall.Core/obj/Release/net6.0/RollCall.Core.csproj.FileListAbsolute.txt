@@ -1,0 +1,12 @@
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\bin\Release\net6.0\RollCall.Core.deps.json
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\bin\Release\net6.0\RollCall.Core.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\bin\Release\net6.0\RollCall.Core.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.csproj.AssemblyReference.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.AssemblyInfoInputs.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.AssemblyInfo.cs
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.csproj.CoreCompileInputs.cache
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\refint\RollCall.Core.dll
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\RollCall.Core.pdb
+C:\Users\vmartinez\source\repos\RollCall\RollCall.Core\obj\Release\net6.0\ref\RollCall.Core.dll

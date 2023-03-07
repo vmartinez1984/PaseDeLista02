@@ -296,8 +296,18 @@
         disabled.value = false  
     }
 
-    const borrarPersona = ()=>{
-        alert('Borrado')
+    const borrarPersona = async ()=>{
+        try{
+            isDeleting.value = true
+            await personService.borrarPersona(person.value.id);
+            window.location.href = '/personas'
+        }catch(error){
+            //console.log(error)
+            if(error.status == 400){
+                setErrors(error.errors)
+            }
+        }
+        //isDeleting.value = false  
     }
 
     const validateForm = () =>{

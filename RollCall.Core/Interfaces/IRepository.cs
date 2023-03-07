@@ -5,7 +5,17 @@ namespace RollCall.Core.Interfaces
     public interface IRepository
     {
         IPersonRepository Person { get; }
+
         IAddressRepository Address { get; }
+
+        IUserRepository User { get; }
+
+        IRoleRepository Role { get; }
+    }
+
+    public interface IRoleRepository
+    {
+        Task<List<Role>> GetAsync();
     }
 
     public interface IBaseRepository<T> where T : class
@@ -25,4 +35,9 @@ namespace RollCall.Core.Interfaces
     }
 
     public interface IAddressRepository : IBaseRepository<Address> { }
+
+    public interface IUserRepository : IBaseRepository<User>
+    {
+        Task<List<User>> GetAsync();
+    }
 }

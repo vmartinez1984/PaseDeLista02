@@ -29,6 +29,7 @@ export default{
 
         return persons
     },
+
     async obtenerPersonaAsync(personId){
         var person
         
@@ -50,6 +51,7 @@ export default{
 
         return person
     },
+
     async setPersonAsync(person){
         //console.log(person)
         var myHeaders = new Headers();
@@ -112,6 +114,29 @@ export default{
             method: 'PUT',
             headers:  myHeaders,
             body: raw
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            //console.log("Data", data)
+            return data
+        }else if(response.status == 400){            
+            const data = await response.json();
+            //console.log("Error 400", data)
+
+            throw data
+        }else{
+            response.json().then((errorJson) => {
+                console.log(errorJson.errors); // should return the error json                
+                //throw new Error(`HTTP error! status: ${response.status}`);
+            }); 
+        }
+    },
+
+    async borrarPersona(personId){
+        const response = await fetch(url + "/" + personId, {
+            method: 'DELETE',
+            //headers:  myHeaders,            
         })
 
         if(response.ok){

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RollCall.Core.Dtos;
-using RollCall.Core.Entities;
 using RollCall.Core.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -62,10 +61,23 @@ namespace RollCall.ApiRest.Controllers
             return Accepted(new { Message = "Datos actualizados" });
         }
 
-        //// DELETE api/<PersonsController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<PersonsController>/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _rollCallBl.Person.DeleteAsync(id);
+
+            return Accepted(new { Mensaje = "Datos borrados" });
+        }
+    }
+
+    public class ControllerBaseRollCall: ControllerBase
+    {
+        protected readonly IBusinessLayer _rollCallBl;
+
+        public ControllerBaseRollCall(IBusinessLayer rollCallBl)
+        {
+            _rollCallBl = rollCallBl;
+        }
     }
 }

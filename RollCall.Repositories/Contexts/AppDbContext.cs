@@ -148,9 +148,7 @@ namespace RollCall.Repositories.Contexts
             });
 
             modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasNoKey();
-
+            {          
                 entity.ToTable("User");
 
                 entity.Property(e => e.DateRegistration).HasColumnType("datetime");

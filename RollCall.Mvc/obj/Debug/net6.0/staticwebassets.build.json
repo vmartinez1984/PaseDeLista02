@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lOsS+Ek6KhcqicXPU/1uGp0bD7mGE5RQpO0R+27cv0Y=",
+  "Hash": "pm9UuBhnC7t+3xbQqpoZHNfkukJJIgMaEnkKRRCjKoY=",
   "Source": "RollCall.Mvc",
   "BasePath": "_content/RollCall.Mvc",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Mvc\\wwwroot\\js\\codigosPostales.js",
+      "SourceId": "RollCall.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Mvc\\wwwroot\\",
+      "BasePath": "_content/RollCall.Mvc",
+      "RelativePath": "js/codigosPostales.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\codigosPostales.js"
     },
     {
       "Identity": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Mvc\\wwwroot\\js\\site.js",

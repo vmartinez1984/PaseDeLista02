@@ -13,6 +13,8 @@ namespace RollCall.Repositories.Extensor
 
             services.AddScoped<IPersonRepository, PersonRepository>();  
             services.AddScoped<IAddressRepository, AddressRepository>();  
+            services.AddScoped<IUserRepository, UserRepository>();  
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             services.AddScoped<IRepository, Repository>();
         }

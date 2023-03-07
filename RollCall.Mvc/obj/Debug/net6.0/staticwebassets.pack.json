@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Mvc\\wwwroot\\js\\codigosPostales.js",
+      "PackagePath": "staticwebassets\\js\\codigosPostales.js"
+    },
+    {
       "Id": "C:\\Users\\vmartinez\\source\\repos\\RollCall\\RollCall.Mvc\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

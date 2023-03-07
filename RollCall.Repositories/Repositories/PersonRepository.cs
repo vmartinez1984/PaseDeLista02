@@ -3,7 +3,6 @@ using RollCall.Core.Entities;
 using RollCall.Core.Interfaces;
 using RollCall.Repositories.Contexts;
 using System.Linq.Dynamic.Core;
-using System.Linq;
 
 namespace RollCall.Repositories.Repositories
 {
@@ -21,16 +20,20 @@ namespace RollCall.Repositories.Repositories
             return entity.Id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            Person entity = _appDbContext.People.FirstOrDefault(x => x.Id == id);
+
+            entity.IsActive = false;
+
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<Person> GetAsync(int id)
         {
             Person entity;
 
-            entity = await _appDbContext.People.Include(x=> x.Addresses).Where(x=> x.Id == id).FirstOrDefaultAsync();
+            entity = await _appDbContext.People.Include(x => x.Addresses).Where(x => x.Id == id).FirstOrDefaultAsync();
 
             return entity;
         }
@@ -47,13 +50,13 @@ namespace RollCall.Repositories.Repositories
             {
                 pager.Search = pager.Search.ToLower();
                 queryable = queryable.Where(
-                    x => 
+                    x =>
                     x.Name.ToLower().Contains(pager.Search)
-                    || 
+                    ||
                     x.LastName.ToLower().Contains(pager.Search)
-                    || 
+                    ||
                     x.DateRegistration.ToString().Contains(pager.Search)
-                    || 
+                    ||
                     x.Birthday.ToString().Contains(pager.Search)
 
                 );
@@ -67,7 +70,7 @@ namespace RollCall.Repositories.Repositories
             //.OrderByDescending(x => x.Id)
             .Skip((pager.PageCurrent - 1) * pager.RecordsPerPage)
             .Take(pager.RecordsPerPage)
-            .ToListAsync();                        
+            .ToListAsync();
             pager.TotalRecordsFiltered = await queryable.CountAsync();
 
             return list;
@@ -77,22 +80,29 @@ namespace RollCall.Repositories.Repositories
         {
             Person original;
 
-            original = _appDbContext.People.Include(x=> x.Addresses).Where(x => x.Id == entity.Id).FirstOrDefault();
-            original.Genere = entity.Genere;    
+            original = _appDbContext.People.Include(x => x.Addresses).Where(x => x.Id == entity.Id).FirstOrDefault();
+            original.Genere = entity.Genere;
             original.Name = entity.Name;
             original.LastName = entity.LastName;
             original.Birthday = entity.Birthday;
-            foreach (var address in original.Addresses)
+            if (original.Addresses.Count == 0)
             {
-                var addressModify = entity.Addresses.ToList().Where(x=>x.Id == address.Id).FirstOrDefault();
-                address.StreetAndNumber = addressModify.StreetAndNumber;
-                address.ZipCode= addressModify.ZipCode;
-                address.Settlement = addressModify.Settlement;
-                address.Town= addressModify.Town;
-                address.State= addressModify.State;
-            }            
+                original.Addresses = entity.Addresses;
+            }
+            else
+            {
+                foreach (var address in original.Addresses)
+                {
+                    var addressModify = entity.Addresses.ToList().Where(x => x.Id == address.Id).FirstOrDefault();
+                    address.StreetAndNumber = addressModify.StreetAndNumber;
+                    address.ZipCode = addressModify.ZipCode;
+                    address.Settlement = addressModify.Settlement;
+                    address.Town = addressModify.Town;
+                    address.State = addressModify.State;
+                }
+            }
 
-            await _appDbContext.SaveChangesAsync();            
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

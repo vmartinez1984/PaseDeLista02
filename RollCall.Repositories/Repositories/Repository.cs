@@ -6,15 +6,23 @@ namespace RollCall.Repositories.Repositories
     {
         public Repository(
            IPersonRepository personRepository,
-           IAddressRepository addressRepository
+           IAddressRepository addressRepository,
+           IUserRepository userRepository,
+           IRoleRepository roleRepository
         )
         {
             Person = personRepository;
             Address = addressRepository;
+            User = userRepository;
+            Role = roleRepository;
         }
 
         public IPersonRepository Person { get; }
 
         public IAddressRepository Address { get; }
+
+        public IUserRepository User { get; }
+
+        public IRoleRepository Role  {get; }
     }    
 }

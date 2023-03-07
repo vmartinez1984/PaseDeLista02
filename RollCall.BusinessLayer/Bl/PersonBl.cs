@@ -23,9 +23,9 @@ namespace RollCall.BusinessLayer.Bl
             return id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _repository.Person.DeleteAsync(id);
         }
 
         public async Task<PagerDto> GetAsync(PagerDtoIn pagerDtoIn)

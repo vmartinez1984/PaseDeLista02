@@ -8,14 +8,18 @@ namespace RollCall.BusinessLayer.Bl
             IPersonBl personBl,
             ICodigosPostalesBl codigosPostalesBl,
             IUserBl userBl,
-            IRoleBl roleBl
+            IRoleBl roleBl,
+            IEmployeeBl employeeBl
         )
         {
             Person = personBl;
             CodigosPostales = codigosPostalesBl;
             User = userBl;
             Role = roleBl;
+            Employee = employeeBl;
         }
+
+        public IEmployeeBl Employee { get; }
 
         public IPersonBl Person { get; }
 

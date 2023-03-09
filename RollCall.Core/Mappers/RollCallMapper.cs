@@ -12,6 +12,8 @@ namespace RollCall.Core.Mappers
 
             CreateMap<Person, PersonDto>();
 
+            CreateMap<Person, PersonDtoIn>();
+
             CreateMap<PersonDtoIn, Address>();
 
             CreateMap<PagerDtoIn, PagerEntity>();
@@ -32,6 +34,17 @@ namespace RollCall.Core.Mappers
                 ;
 
             CreateMap<Role, RoleDto>();
+
+            CreateMap<EmployeeDtoIn, Employee>()
+                //.ForMember(entity => entity.Person.Name, x => x.MapFrom(dto => dto.Name))
+                //.ForMember(entity => entity.Person.LastName, x => x.MapFrom(dto => dto.LastName))
+                //.ForMember(entity => entity.Person.Birthday, x => x.MapFrom(dto => dto.Birthday))
+                //.ForMember(entity => entity.Person.Genere, x => x.MapFrom(dto => dto.Genere))                
+                ;
+
+            //CreateMap<TSource, TDestination>();
+
+            CreateMap<Employee, EmployeeDto>();
         }
     }
 }

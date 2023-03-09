@@ -13,9 +13,9 @@ namespace RollCall.Core.Dtos
         
     }
 
-    public class PersonDtoIn : AddressDtoIn
+    public class PersonDtoIn //: AddressDtoIn
     {
-        public int AddressId { get; set; } 
+        //public int AddressId { get; set; } 
 
         [Required(ErrorMessage = "El {0} no puede ser vacio")]
         [Display(Name = "Nombre")]

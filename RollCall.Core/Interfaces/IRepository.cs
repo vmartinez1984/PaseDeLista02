@@ -11,6 +11,8 @@ namespace RollCall.Core.Interfaces
         IUserRepository User { get; }
 
         IRoleRepository Role { get; }
+
+        IEmployeeRepository Employee { get; }
     }
 
     public interface IRoleRepository
@@ -40,4 +42,9 @@ namespace RollCall.Core.Interfaces
     {
         Task<List<User>> GetAsync();
     }
+
+    public interface IEmployeeRepository : IBaseRepository<Employee> 
+    {
+        Task<List<Employee>> GetAsync(PagerEntity pager);            
+    }    
 }

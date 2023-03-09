@@ -4,6 +4,7 @@ import FormularioDePersona from '@/components/personas/FormularioDePersona.vue'
 import HelloWorld from '@/components/HelloWorld'
 import ListUsers from '@/components/users/ListUsers'
 import FormUser from '@/components/users/FormUser'
+import ListEmployees from '@/components/employees/ListEmployees'
 
 const routes =[
     {
@@ -50,6 +51,11 @@ const routes =[
         path: '/users/delete/:id',
         name: 'deleteUser',
         component: FormUser
+    },
+    {
+        path: '/employees',
+        name: 'listEmployees',
+        component: ListEmployees
     }
 ]
 

@@ -65,12 +65,12 @@ namespace RollCall.Mvc.Controllers
             List<CodigoPostalDto> codigosPostales;
 
             personDto = await _rollCallBl.Person.GetAsync(id);
-            codigosPostales = await _rollCallBl.CodigosPostales.ObtenerCodigosPostales(personDto.ZipCode);
-            if(codigosPostales.Count() > 1)
-            {
-                codigosPostales.Add(new CodigoPostalDto { Colonia = "Seleccione" });
-            }
-            ViewBag.CodigosPostales = new SelectList(codigosPostales, "Colonia","Colonia");
+            //codigosPostales = await _rollCallBl.CodigosPostales.ObtenerCodigosPostales(personDto.ZipCode);
+            //if(codigosPostales.Count() > 1)
+            //{
+            //    codigosPostales.Add(new CodigoPostalDto { Colonia = "Seleccione" });
+            //}
+            //ViewBag.CodigosPostales = new SelectList(codigosPostales, "Colonia","Colonia");
 
             return View(personDto);
         }

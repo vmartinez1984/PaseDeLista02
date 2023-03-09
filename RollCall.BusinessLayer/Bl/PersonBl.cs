@@ -46,20 +46,20 @@ namespace RollCall.BusinessLayer.Bl
         {
             Person entity;
             PersonDto dto;
-            Address address;
+            //Address address;
 
             entity = await _repository.Person.GetAsync(id);
             dto = _mapper.Map<PersonDto>(entity);
-            address = entity.Addresses.FirstOrDefault();
-            if(address != null)
-            {
-            dto.StreetAndNumber = address.StreetAndNumber;
-            dto.ZipCode = address.ZipCode;
-            dto.Settlement = address.Settlement;
-            dto.Town = address.Town;
-            dto.State = address.State;
-            dto.AddressId = address.Id;
-            }
+            //address = entity.Addresses.FirstOrDefault();
+            //if(address != null)
+            //{
+            //dto.StreetAndNumber = address.StreetAndNumber;
+            //dto.ZipCode = address.ZipCode;
+            //dto.Settlement = address.Settlement;
+            //dto.Town = address.Town;
+            //dto.State = address.State;
+            //dto.AddressId = address.Id;
+            //}
 
             return dto;
         }
@@ -72,7 +72,7 @@ namespace RollCall.BusinessLayer.Bl
             entity = _mapper.Map<Person>(item);
             address = _mapper.Map<Address>(item);
             address.PersonId = id;
-            address.Id = item.AddressId;            
+            //address.Id = item.AddressId;            
             entity.Addresses.Add(address);            
             entity.Id = id;
 

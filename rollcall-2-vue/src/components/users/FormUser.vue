@@ -206,7 +206,7 @@
             disabled.value = true            
             await usersService.addUserAsync(user.value)
 
-            window.location.href = '/users'
+            route.push({name: 'listUsers'})
         }catch(error){
             console.log(error)
         }
@@ -304,7 +304,7 @@
 
             await usersService.deleteUserAsync(user.value.id)
 
-            window.location.href = '/users'
+            route.push({name: 'listUsers'})
         }catch(error){
             console.log(error)
         }

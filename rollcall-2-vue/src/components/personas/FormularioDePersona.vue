@@ -274,6 +274,7 @@
         try{
             disabled.value = true
             await personService.setPersonAsync(person.value);
+            route.push({name: 'listaDePersonas'})
         }catch(error){
             //console.log(error)
             if(error.status == 400){
@@ -287,6 +288,7 @@
         try{
             disabled.value = true
             await personService.actualizarPersona(person.value);
+            route.push({name: 'listaDePersonas'})
         }catch(error){
             //console.log(error)
             if(error.status == 400){
@@ -300,7 +302,7 @@
         try{
             isDeleting.value = true
             await personService.borrarPersona(person.value.id);
-            window.location.href = '/personas'
+            route.push({name: 'listaDePersonas'})
         }catch(error){
             //console.log(error)
             if(error.status == 400){

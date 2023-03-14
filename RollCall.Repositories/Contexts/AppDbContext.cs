@@ -104,9 +104,7 @@ namespace RollCall.Repositories.Contexts
 
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.ToTable("Employee");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("Employee");                
 
                 entity.Property(e => e.DateRegistration).HasColumnType("datetime");
 

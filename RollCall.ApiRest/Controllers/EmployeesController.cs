@@ -2,8 +2,6 @@
 using RollCall.Core.Dtos;
 using RollCall.Core.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace RollCall.ApiRest.Controllers
 {
     [Route("api/[controller]")]
@@ -49,14 +47,21 @@ namespace RollCall.ApiRest.Controllers
 
         // PUT api/<EmployeesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] EmployeeDtoIn employee)
         {
+            await _rollCallBl.Employee.UpdateAsync(employee, id);
+
+            return Accepted(new { Message = "Datos actualizados" });
         }
 
         // DELETE api/<EmployeesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            await _rollCallBl.Employee.DeleteAsync(id);
+
+            return Accepted(new { Message = $"Empleado {id} borrado" });
         }
-    }
+        
+    }//end class
 }

@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import ListUsers from '@/components/users/ListUsers'
 import FormUser from '@/components/users/FormUser'
 import ListEmployees from '@/components/employees/ListEmployees'
+import FormEmployee from '@/components/employees/FormEmployee'
 
 const routes =[
     {
@@ -56,6 +57,21 @@ const routes =[
         path: '/employees',
         name: 'listEmployees',
         component: ListEmployees
+    },
+    {
+        path: '/employees/create',
+        name: 'createEmployee',
+        component: FormEmployee
+    },
+    {
+        path: '/employees/edit/:id',
+        name: 'editEmployee',
+        component: FormEmployee
+    },
+    {
+        path: '/employees/delete/:id',
+        name: 'deleteEmployee',
+        component: FormEmployee
     }
 ]
 

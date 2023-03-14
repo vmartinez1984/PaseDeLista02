@@ -14,16 +14,21 @@ namespace RollCall.Repositories.Repositories
         }
 
         public async Task<int> AddAsync(Employee entity)
-        {
+        {            
             _appDbContext.Employees.Add(entity);
             await _appDbContext.SaveChangesAsync();
 
-            return entity.Id;
+            return entity.Id;            
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            Employee employee;
+
+            employee = await _appDbContext.Employees.FirstAsync(x=> x.Id == id);
+            employee.IsActive = false;
+
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<Employee> GetAsync(int id)
@@ -48,17 +53,16 @@ namespace RollCall.Repositories.Repositories
             if (string.IsNullOrEmpty(pager.Search) == false)
             {
                 pager.Search = pager.Search.ToLower();
-                //queryable = queryable.Where(
-                //    x =>
-                //    x.Name.ToLower().Contains(pager.Search)
-                //    ||
-                //    x.LastName.ToLower().Contains(pager.Search)
+                queryable = queryable.Where(
+                   x =>
+                   x.Person.Name.ToLower().Contains(pager.Search)
+                   ||
+                   x.Person.LastName.ToLower().Contains(pager.Search)
                 //    ||
                 //    x.DateRegistration.ToString().Contains(pager.Search)
                 //    ||
                 //    x.Birthday.ToString().Contains(pager.Search)
-
-                //);
+                );
             }
             if (string.IsNullOrEmpty(pager.SortColumn) == false && string.IsNullOrEmpty(pager.SortColumnDir) == false)
             {
@@ -75,9 +79,11 @@ namespace RollCall.Repositories.Repositories
             return list;
         }
 
-        public Task UpdateAsync(Employee entity)
+        public async Task UpdateAsync(Employee entity)
         {
-            throw new NotImplementedException();
+            _appDbContext.Employees.Update(entity);
+
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

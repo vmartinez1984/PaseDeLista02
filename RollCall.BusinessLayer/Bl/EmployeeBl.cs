@@ -22,9 +22,9 @@ namespace RollCall.BusinessLayer.Bl
             return entity.Id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+           await _repository.Employee.DeleteAsync(id);
         }
 
         public async Task<EmployeeDto> GetAsync(int id)
@@ -52,9 +52,18 @@ namespace RollCall.BusinessLayer.Bl
             return pagerDto;
         }
 
-        public Task UpdateAsync(EmployeeDtoIn item, int id)
+        public async Task UpdateAsync(EmployeeDtoIn item, int id)
         {
-            throw new NotImplementedException();
+            Employee employee;
+
+            employee = await _repository.Employee.GetAsync(id);
+            employee.Notes = item.Notes;
+            employee.Person.Name = item.Person.Name;
+            employee.Person.LastName = item.Person.LastName;
+            employee.Person.Birthday = item.Person.Birthday;
+            employee.Person.Genere = item.Person.Genere;
+
+            await _repository.Employee.UpdateAsync(employee);
         }
     }
 }

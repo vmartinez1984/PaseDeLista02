@@ -39,4 +39,25 @@ namespace RollCall.Core.Dtos
         [Display(Name = "Genero")]
         public string Genere { get; set; }
     }
+
+    public class UserLoginDto
+    {
+        [Required(ErrorMessage = "El {0} no puede ser vacio")]
+        [Display(Name = "Correo")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "La {0} no puede ser vacia")]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; }
+    }
+
+    public class TokenDto
+    {
+        public string Token { get; set; }
+
+        public string Roles { get; set; }
+
+        public DateTime DateExpiration { get; set; }
+        public string FullName { get; set; }
+    }
 }

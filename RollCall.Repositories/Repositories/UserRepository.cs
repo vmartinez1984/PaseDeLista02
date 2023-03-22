@@ -53,6 +53,18 @@ namespace RollCall.Repositories.Repositories
             return list;
         }
 
+        public async Task<User> GetAsync(string email)
+        {
+            User entity;
+
+            entity = await _appDbContext.Users
+                .Include(x => x.Person)
+                .Include(x => x.Role)
+                .Where(x => x.Email == email).FirstOrDefaultAsync();
+
+            return entity;
+        }
+
         public async Task UpdateAsync(User entity)
         {
             _appDbContext.Users.Update(entity);

@@ -37,7 +37,7 @@ namespace RollCall.BusinessLayer.Bl
 
             return dto;
         }
-
+        
         public async Task<PagerDto> GetAsync(PagerDtoIn pagerDtoIn)
         {
             PagerEntity pagerEntity;

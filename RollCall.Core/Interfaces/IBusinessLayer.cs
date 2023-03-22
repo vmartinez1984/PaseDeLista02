@@ -13,6 +13,13 @@ namespace RollCall.Core.Interfaces
         IRoleBl Role { get; }
 
         IEmployeeBl Employee { get; }
+        ILoginBl Login { get; }
+    }
+
+
+    public interface ILoginBl
+    {
+        Task<TokenDto> LoginAsync(UserLoginDto userLoginDto);
     }
 
     /// <summary>

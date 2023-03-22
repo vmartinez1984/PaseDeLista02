@@ -3,7 +3,6 @@ using RollCall.Core.Entities;
 using RollCall.Core.Interfaces;
 using RollCall.Repositories.Contexts;
 using System.Linq.Dynamic.Core;
-using System.Security.Cryptography.X509Certificates;
 
 namespace RollCall.Repositories.Repositories
 {

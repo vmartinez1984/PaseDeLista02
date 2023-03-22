@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RollCall.ApiRest.Helpers;
 using RollCall.Core.Dtos;
 using RollCall.Core.Interfaces;
 
@@ -14,6 +15,7 @@ namespace RollCall.ApiRest.Controllers
 
         // GET: api/<EmployeesController>
         [HttpGet]
+        [AuthorizeRoles()]
         public async Task<IActionResult> Get([FromQuery] PagerDtoIn pagerDtoIn)
         {
             PagerDto pager;

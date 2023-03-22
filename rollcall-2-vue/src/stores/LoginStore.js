@@ -1,9 +1,10 @@
 import { defineStore } from "pinia"
 
-export const useLoginStore = defineStore ('loginStore',{
+export const useLoginStore = defineStore ('loginStore', {
     state:() =>({
         isLogin: false,
         userName: '',
+        fullName: '',
         roles: ''
     }),
     getters:{},
@@ -17,5 +18,4 @@ export const useLoginStore = defineStore ('loginStore',{
             this.isLogin = false
         }
     }
-
 })

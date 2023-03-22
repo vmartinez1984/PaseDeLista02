@@ -9,7 +9,8 @@ namespace RollCall.BusinessLayer.Bl
             ICodigosPostalesBl codigosPostalesBl,
             IUserBl userBl,
             IRoleBl roleBl,
-            IEmployeeBl employeeBl
+            IEmployeeBl employeeBl,
+            ILoginBl loginBl
         )
         {
             Person = personBl;
@@ -17,6 +18,7 @@ namespace RollCall.BusinessLayer.Bl
             User = userBl;
             Role = roleBl;
             Employee = employeeBl;
+            Login = loginBl;
         }
 
         public IEmployeeBl Employee { get; }
@@ -28,5 +30,7 @@ namespace RollCall.BusinessLayer.Bl
         public IUserBl User { get; }
 
         public IRoleBl Role { get; }
+
+        public ILoginBl Login { get; }
     }
 }

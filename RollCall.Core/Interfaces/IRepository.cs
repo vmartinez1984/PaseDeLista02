@@ -41,6 +41,7 @@ namespace RollCall.Core.Interfaces
     public interface IUserRepository : IBaseRepository<User>
     {
         Task<List<User>> GetAsync();
+        Task<User> GetAsync(string email);
     }
 
     public interface IEmployeeRepository : IBaseRepository<Employee> 

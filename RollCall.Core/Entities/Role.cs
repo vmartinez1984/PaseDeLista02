@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RollCall.Core.Entities
+﻿namespace RollCall.Core.Entities
 {
     public partial class Role
     {

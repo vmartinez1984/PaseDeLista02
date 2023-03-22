@@ -19,9 +19,21 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li>
+                            <button class="dropdown-item" type="button" @click="logOut">Logout</button>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </nav>
 </template>
+
+<script setup>
+import { useLoginStore } from '@/stores/LoginStore'
+import router from '@/router'
+
+const logOut = () => {
+    useLoginStore().logOut()
+    router.push({name: 'login'})
+}
+</script>

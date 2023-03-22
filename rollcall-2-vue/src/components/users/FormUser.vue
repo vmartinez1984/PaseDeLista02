@@ -188,6 +188,7 @@
     var route = useRoute()
 
     const savePersonAsync = async () => {
+        route.push({name: 'listUsers'})
         console.log(user.value)
         if(validateForm()){
             //alert('Hay error')

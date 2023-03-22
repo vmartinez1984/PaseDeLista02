@@ -6,6 +6,8 @@ import ListUsers from '@/components/users/ListUsers'
 import FormUser from '@/components/users/FormUser'
 import ListEmployees from '@/components/employees/ListEmployees'
 import FormEmployee from '@/components/employees/FormEmployee'
+import LoginPage from '@/components/pages/LoginPage'
+import { useLoginStore } from '@/stores/LoginStore'
 
 const routes =[
     {
@@ -56,7 +58,8 @@ const routes =[
     {
         path: '/employees',
         name: 'listEmployees',
-        component: ListEmployees
+        component: ListEmployees,
+        meta: { requiresAuth: true}
     },
     {
         path: '/employees/create',
@@ -71,13 +74,50 @@ const routes =[
     {
         path: '/employees/delete/:id',
         name: 'deleteEmployee',
-        component: FormEmployee
+        component: FormEmployee,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginPage
     }
 ]
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
+})
+router.beforeEach((to, from, next)=>{
+    //console.log(to.meta.requiresAuth)
+    //console.log(to)
+    //console.log(from)    
+
+    if(to.matched.some(route => route.meta.requiresAuth)){
+        var isLogin
+    //     var rol
+        //console.log("login: ", useLoginStore().isLogin)
+        isLogin =  useLoginStore().isLogin
+    //    rol = useLoginStore().roles
+    //     console.log('userRol ' + rol)
+    //     console.log("Esta logueado: " + isLogin)
+    //     console.log(to.meta.role.includes(rol))
+        
+    //     console.log(to.meta.role)
+        if(isLogin == true){
+    //     //Se verifica si tiene acceso deacuerdo al rol
+    //     if(to.meta.role.includes(rol)){
+    //         console.log("Permitido")
+            next()
+        }else{
+            console.log("Acceso no permitido")
+    //         next('/AccesoNoPermitido')
+    //     }
+    //     }else{
+           next('/login')
+        }   
+    }else{
+       next()
+    }
 })
 
 export default router

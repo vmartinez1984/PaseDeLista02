@@ -21,6 +21,8 @@ namespace RollCall.BusinessLayer.Extensor
             services.AddScoped<IEmployeeBl, EmployeeBl>();
 
             services.AddScoped<ILoginBl, LoginBl>();
+
+            services.AddScoped<IHolidayBl, HolidayBl>();
         }
     }
 }

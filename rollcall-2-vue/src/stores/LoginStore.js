@@ -5,14 +5,16 @@ export const useLoginStore = defineStore ('loginStore', {
         isLogin: false,
         userName: '',
         fullName: '',
-        roles: ''
+        roles: '',
+        token: ''
     }),
     getters:{},
     actions:{
-        logIn(userName, roles){
+        logIn(userName, roles, token){
             this.isLogin = true
-            this.userName = userName
+            this.fullName = userName
             this.roles = roles
+            this.token = token
         },
         logOut(){
             this.isLogin = false

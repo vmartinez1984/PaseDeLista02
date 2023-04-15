@@ -9,7 +9,8 @@ namespace RollCall.Repositories.Repositories
            IAddressRepository addressRepository,
            IUserRepository userRepository,
            IRoleRepository roleRepository,
-           IEmployeeRepository employeeRepository
+           IEmployeeRepository employeeRepository,
+           IHolidayRepository holidayRepository
         )
         {
             Person = personRepository;
@@ -17,6 +18,7 @@ namespace RollCall.Repositories.Repositories
             User = userRepository;
             Role = roleRepository;
             Employee = employeeRepository;
+            Holiday = holidayRepository;
         }
 
         public IEmployeeRepository Employee { get; }
@@ -28,5 +30,9 @@ namespace RollCall.Repositories.Repositories
         public IUserRepository User { get; }
 
         public IRoleRepository Role  {get; }
+
+        public IHolidayRepository Holiday { get; }
+
+        public object Schedule => throw new NotImplementedException();
     }    
 }

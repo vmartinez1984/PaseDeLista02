@@ -6,7 +6,7 @@
                     <h3 class="text-center font-weight-light my-4">Inicio de sesión</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form @submit.prevent="logIn">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" v-model="email" />
                             <label for="inputEmail">Correo</label>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                             <a class="small" href="password.html">¿Olvido su contraseña?</a>
-                            <button class="btn btn-primary" @click="logIn" type="button">Iniciar sesión</button>
+                            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
                         </div>
                     </form>
                 </div>
@@ -38,9 +38,8 @@ var password = ref('')
 const logIn = async () => {
     var response = await loginService.loginAsync(email.value, password.value)
     if(response.status == 200){
-        useLoginStore().isLogin = true
-        useLoginStore().fullName = response.data.fullName
-        useLoginStore().roles = response.data.roles
+        console.log(response.data)
+        useLoginStore().logIn(response.data.fullName, response.data.roles, response.data.token)
         //console.log("LoginPage, está logeado? " + useLoginStore().isLogin)
         //console.log(router)
         router.push({ name: 'holaMundo' })

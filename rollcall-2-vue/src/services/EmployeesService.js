@@ -1,6 +1,6 @@
 import axios from "axios"
 import baseUrl from "./BaseUrl"
-const url = baseUrl.urlApiRollCall + "employees"  
+const url = baseUrl.urlApiRollCall + "employees"
 
 export default{
     async getEmployeesAsync(pagerIn){

@@ -2,8 +2,6 @@
 using RollCall.Core.Dtos;
 using RollCall.Core.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace RollCall.ApiRest.Controllers
 {
     [Route("api/[controller]")]
@@ -49,8 +47,8 @@ namespace RollCall.ApiRest.Controllers
         {
             int id;
 
-            //id = await _rollCallBl.User.AddAsync(user);
-            id = 1984;
+            id = await _rollCallBl.User.AddAsync(user);
+            //id = 1984;
 
             return Created($"Users/{id}", new { Id = id });
         }

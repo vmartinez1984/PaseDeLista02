@@ -45,6 +45,10 @@ namespace RollCall.Core.Mappers
             //CreateMap<TSource, TDestination>();
 
             CreateMap<Employee, EmployeeDto>();
+
+            CreateMap<HolidayDtoIn, Holiday>();
+
+            CreateMap<Holiday, HolidayDto>();
         }
     }
 }

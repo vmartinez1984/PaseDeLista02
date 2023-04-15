@@ -13,6 +13,16 @@ namespace RollCall.Core.Interfaces
         IRoleRepository Role { get; }
 
         IEmployeeRepository Employee { get; }
+
+        IHolidayRepository Holiday { get; }
+        object Schedule { get; }
+    }
+
+
+
+    public interface IHolidayRepository : IBaseRepository<Holiday>
+    {
+        Task<List<Holiday>> GetAsync();
     }
 
     public interface IRoleRepository
@@ -46,6 +56,8 @@ namespace RollCall.Core.Interfaces
 
     public interface IEmployeeRepository : IBaseRepository<Employee> 
     {
-        Task<List<Employee>> GetAsync(PagerEntity pager);            
+        Task<List<Employee>> GetAsync(PagerEntity pager);
+
+        Task<Employee> GetAsync(string employeeNumber);
     }    
 }

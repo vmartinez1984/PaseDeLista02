@@ -18,13 +18,13 @@ namespace RollCall.BusinessLayer.Bl
             entity = _mapper.Map<Employee>(item);
             entity.Number = string.Empty;
             entity.Id = await _repository.Employee.AddAsync(entity);
-            
+
             return entity.Id;
         }
 
         public async Task DeleteAsync(int id)
         {
-           await _repository.Employee.DeleteAsync(id);
+            await _repository.Employee.DeleteAsync(id);
         }
 
         public async Task<EmployeeDto> GetAsync(int id)
@@ -37,7 +37,7 @@ namespace RollCall.BusinessLayer.Bl
 
             return dto;
         }
-        
+
         public async Task<PagerDto> GetAsync(PagerDtoIn pagerDtoIn)
         {
             PagerEntity pagerEntity;
@@ -50,6 +50,18 @@ namespace RollCall.BusinessLayer.Bl
             pagerDto.List = _mapper.Map<List<EmployeeDto>>(employees);
 
             return pagerDto;
+        }
+
+        public async Task<int> GetAsync(string employeeNumber)
+        {
+            Employee entity;
+
+            entity = await _repository.Employee.GetAsync(employeeNumber);
+
+            if (entity == null)
+                return 0;
+            else
+                return entity.Id;
         }
 
         public async Task UpdateAsync(EmployeeDtoIn item, int id)

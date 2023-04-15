@@ -78,6 +78,15 @@ namespace RollCall.Repositories.Repositories
             return list;
         }
 
+        public async Task<Employee> GetAsync(string employeeNumber)
+        {
+            Employee employee;
+
+            employee = await _appDbContext.Employees.Where(x=> x.Number == employeeNumber).FirstOrDefaultAsync();
+
+            return employee;
+        }
+
         public async Task UpdateAsync(Employee entity)
         {
             _appDbContext.Employees.Update(entity);

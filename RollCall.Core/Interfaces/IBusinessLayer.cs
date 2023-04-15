@@ -13,10 +13,22 @@ namespace RollCall.Core.Interfaces
         IRoleBl Role { get; }
 
         IEmployeeBl Employee { get; }
+
         ILoginBl Login { get; }
+
+        IHolidayBl Holiday { get; }
+        ICheckInBl CheckIn { get; }
     }
 
+    public interface ICheckInBl
+    {
+        Task<int> AddAsync(CheckIn item);
+    }
 
+    public interface IHolidayBl : IBaseBl<HolidayDtoIn, HolidayDto>
+    {
+        Task<List<HolidayDto>> GetAsync();
+    }
     public interface ILoginBl
     {
         Task<TokenDto> LoginAsync(UserLoginDto userLoginDto);
@@ -38,6 +50,7 @@ namespace RollCall.Core.Interfaces
     public interface IEmployeeBl : IBaseBl<EmployeeDtoIn, EmployeeDto>
     {
         Task<PagerDto> GetAsync(PagerDtoIn pagerDtoIn);
+        Task<int> GetAsync(string employeeNumber);
     }
 
     public interface ICodigosPostalesBl

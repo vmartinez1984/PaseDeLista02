@@ -10,7 +10,8 @@ namespace RollCall.BusinessLayer.Bl
             IUserBl userBl,
             IRoleBl roleBl,
             IEmployeeBl employeeBl,
-            ILoginBl loginBl
+            ILoginBl loginBl,
+            IHolidayBl holidayBl
         )
         {
             Person = personBl;
@@ -19,18 +20,23 @@ namespace RollCall.BusinessLayer.Bl
             Role = roleBl;
             Employee = employeeBl;
             Login = loginBl;
+            Holiday = holidayBl;
         }
+
+        public IHolidayBl Holiday { get; }
 
         public IEmployeeBl Employee { get; }
 
         public IPersonBl Person { get; }
 
-        public ICodigosPostalesBl CodigosPostales { get; set; }
+        public ICodigosPostalesBl CodigosPostales { get; }
 
         public IUserBl User { get; }
 
         public IRoleBl Role { get; }
 
         public ILoginBl Login { get; }
+
+        public ICheckInBl CheckIn => throw new NotImplementedException();
     }
 }

@@ -13,7 +13,8 @@ const routes =[
     {
         path: '/',
         name: 'holaMundo',
-        component: HelloWorld
+        component: HelloWorld,
+        meta: { requiresAuth: true}
     },
     {
         path: '/personas',
